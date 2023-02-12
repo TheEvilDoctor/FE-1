@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            {% block title %}
+            {{ flatpage.title }}
+            {% endblock title %}
+        </title>
+        {% load static %}
+<!--Как ни пыталась, стили так и не подключились из внешнего файла-->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        <style>
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+
+            li {
+                float: right;
+            }
+
+            li a {
+                display: block;
+                color:aliceblue;
+                font-size: small;
+                text-decoration: none;
+                padding: 12px;
+                font-family:Verdana, Geneva, Tahoma, sans-serif;
+            }
+
+            li a:hover {
+                color:rgb(192, 249, 255);
+            }
+
+            .grid-cont {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 30% 70%;
+                align-content: space-between;
+            
+                grid-gap: 0px;
+            } 
+
+            .grid-cont > div {
+                background-color: black;
+                text-align: left;
+                justify-content: center;
+            }
+            
+            p.gen {
+                color: aliceblue;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-family:Verdana, Geneva, Tahoma, sans-serif;
+                font-size: large;
+                margin: 0;
+                padding: 10px;
+            }
+
+            .bloc-content {
+                width: 50%;
+                padding: 3%;
+                margin: 5% 25%;
+                height: 400px;
+                background-color: black;
+                color: aliceblue;
+                font-family:Verdana, Geneva, Tahoma, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="grid-cont">
+            <div>
+                <p class="gen">Моё резюме</p>
+            </div>
+            <div>
+                <ul>
+                    <li><a href="/contacts">Обратная связь</a></li>
+                    <li><a href="/about">Обо мне</a></li>
+                    <li><a href="/start">Главная</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="bloc-content">
+            {% block content %}
+            {{ flatpage.content }}
+            {% endblock content %}
+        </div>
+    </body>
+</html>
